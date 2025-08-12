@@ -124,6 +124,11 @@ Node.js: npm install (First, use npm simply. For now, don't touch other package 
 Run: `go mod tidy` (Be careful with GOPATH manipulation. The key points are to initialize in the terminal of the Go project directory. Third-party libraries can only be installed in the project directory, not globally.) 
 The Java:lib directory already contains the necessary JAR packages. Manually add JAR dependencies to the lib folder. See the screenshot. 
 
+#### After creating the project according to my naming convention, you can try replacing all my folder files. See if it can run. 
+> If there are any issues, paste all the PY, JS, GO, and 4JAVA files into your newly created project located at D:\ad\4languages. It should be able to run. Pay attention to the content of 4languages.iml. You can configure it yourself or follow my example. It shouldn't be too complicated. The scripts run independently. If there are any details I haven't covered, you can search online or leave a message for me. Don't be impatient. The process of trying it out is exactly the time when you think, solve problems, and level up.
+
+> There is a certain probability that the imported project may not be compatible. Your newly created project is based on the default configuration of your own IDEA. Can it run after being copied into the progressive directory? Keep it up! 💪
+
 ```diff
 ?? Project Structure Other code supplementary explanations with path descriptions text
 D:\ad\4languages
@@ -224,6 +229,24 @@ Even I, who learned the hard way in the workshop, can handle a four-language env
 - Actually, Docker is really powerful... **but you can't just use it blindly**
 - Just like traditional Chinese medicine teaches both "ready-made medicine for quick results" and "diagnosis-based treatment"
 - The goal of this project is: **to make you an expert in solving environment issues like an old Chinese doctor** 🏮 
+- I hope that everyone's learning environment is a clean, native server environment.
+- Without the performance loss caused by Docker, **smooth and enjoyable learning** is achieved.
+
+### 🐳 Docker vs Bare-Metal Server Performance Differences (Practical Reference)
+
+- I feel that the performance degradation is slightly greater than the measured value. It is estimated to be related to the quality of the server hardware configuration and the differences in the running project content.
+
+#### 📊 **Basic Performance Overhead Comparison**
+| Scenario                | Docker Performance Overhead | Description                                                                 |
+|-------------------------|----------------------------|-----------------------------------------------------------------------------|
+| **CPU Calculation**     | 0% ~ 3%                    | Negligible overhead (Containers share host CPU scheduling with no virtualization cost) |
+| **Memory Access**       | 0% ~ 1%                    | Almost no difference in read/write performance (Direct mapping to host physical memory) |
+| **Disk I/O (Read)**     | 5% ~ 15%                   | Significantly affected by storage driver (e.g., `overlay2`) and volume type (anonymous/bound mount) |
+| **Disk I/O (Write)**    | 10% ~ 30%                  | Additional overhead caused by container layer overlay writes (Copy-on-Write mechanism) |
+| **Network Latency**     | 1% ~ 5%                    | Minor forwarding overhead in default `bridge` network mode (Near-native performance with `host` mode) |
+
+> 📌 **Key Conclusion**: CPU/memory-intensive tasks (e.g., algorithm computation, caching services) show negligible impact; disk/network-intensive tasks (e.g., databases, high-concurrency APIs) require optimization focus on storage drivers and network modes.
+
 ## 🏅 Achievements Unlocked
 - [ ] Bare Metal Deployment Master (Complete all cases without using containers)
 - [ ] Containerization Refactorer (Migrate cases to Docker and submit PR) 
@@ -238,8 +261,41 @@ A practitioner who has transitioned from the production line to full-stack devel
 - Continuously exploring the integration of traditional Chinese medicine thinking and programming
 > "Education is an entry ticket, but the ability to solve problems is the eternal pass"
 
+### 🩺 Author Background: 300-herb 'Intuitive Prescription Review' Mastery
+
+- Although I haven't obtained the professional qualification, the practical experience I have accumulated in the clinical front line (community clinics/large general hospitals) and throughout the entire process of Chinese medicinal material production has built up my core professional capabilities
+
+(Clinically frequent 300 herbs + 200 secondary herbs - instantly identify & correct irrational prescriptions without references in 30 seconds!)
+
+#### 🧠 Core Competencies
+| Dimension         | Description                                                                 | Level  |
+|-------------------|-----------------------------------------------------------------------------|--------|
+| **Core Herb Mastery** | Instant command of 300 high-frequency herbs (e.g., Astragalus/Angelica) - properties, compatibility taboos, dosage windows | ⭐⭐⭐⭐⭐ |
+| **Secondary Herb Radar** | Rapid identification of 200 secondary herbs' (e.g., Tatarian Aster) special effects & risks | ⭐⭐⭐⭐  |
+| **Formula Intuition**   | Instantly spot compatibility flaws in 'Monarch-Minister-Assistant-Envoy' structure (e.g., Ephedra+Rehmannia trapping pathogens) | ⭐⭐⭐⭐⭐ |
+| **Correction Speed**    | Average 3-second correction of irrational prescriptions (e.g., Licorice-induced edema/Pregnancy-contraindicated blood activators) | ⭐⭐⭐⭐⭐ |
+
+#### 🛠️ Mastery Secrets
+- **Three-Pass Herb Method**: Categorize by efficacy → meridian tropism → taboos
+- **Formula Deconstruction**: Break down classic formulas into modular components to understand core compatibility logic
+- **Clinical Fermentation**: Analyze master physicians' cases to dissect medication logic
+- **Modern Integration**: Correlate TCM syndromes with modern medical indicators
+
+#### 💡 Case Studies
+- Cold formula with Rehmannia → Corrected to Mint+Schizonepeta for exterior release
+- Chronic gastritis with excessive Coptis → Adjusted to 6g + Ginger for toxicity reduction
+- Pregnancy formula with Sparganium/Curcuma → Replaced with Amomum/Tangerine Peel for fetal safety
+
+>"It's like an experienced programmer never forgets the terror of the 'sudo rm -rf' command -
+I will always remember the dangerous area of the 'Eighteen Contradictions and Nineteen Precautions' pairing!"
+
+> 🎯 Goal: Make prescriptions as safe & effective as code - eliminating irrational drug use!
+(Verified by tertiary hospital training & medical licensing assessments)
+
+- Now, take the open-source project as the "mortar mill", while playing with jokes, we will review the profound knowledge of traditional Chinese medicine 🔥
+
+### Technical Manifesto
 ```diff
-### Technical Manifesto 
 + No academic textbook-style code
 + Only create "industrial-grade" cases that can run in the workshop
 + Guided by the holistic view of traditional Chinese medicine in technical architecture ```
