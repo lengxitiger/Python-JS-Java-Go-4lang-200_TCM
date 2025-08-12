@@ -1,4 +1,7 @@
 markdown
+
+[点击查看技能树图片](./erp_skill_tree.png) | [点击查看养生海报](./programmer_health_poster.png)
+
 # Four Language Programming Practice Bible: 200 Examples in Python/JS/Go/Java (Traditional Chinese Medicine Style Edition)
 ## 🏁 Milestone Declaration | 200 Days × 200 Open Source Gifts
 "From the production line to a full-stack developer proficient in four languages: A coding odyssey of a non-graduated high schooler with no formal training"
