@@ -1,0 +1,26 @@
+digraph G {
+  node [shape=ellipse, style=filled];
+  "茯苓" [label="茯苓\n(HOT)\n访问:0", fillcolor=black];
+  "茯苓" -> "当归";
+  "当归" [label="当归\n(HOT)\n访问:3", fillcolor=black];
+  "当归" -> "千年健";
+  "千年健" [label="千年健\n(COLD)\n访问:0", fillcolor=red];
+  "千年健" -> "丹参";
+  "丹参" [label="丹参\n(HOT)\n访问:0", fillcolor=black];
+  "千年健" -> "夏天无";
+  "夏天无" [label="夏天无\n(HOT)\n访问:0", fillcolor=black];
+  "当归" -> "猫须草";
+  "猫须草" [label="猫须草\n(COLD)\n访问:0", fillcolor=black];
+  "猫须草" -> "枸杞";
+  "枸杞" [label="枸杞\n(HOT)\n访问:0", fillcolor=red];
+  "猫须草" -> "甘草";
+  "甘草" [label="甘草\n(HOT)\n访问:0", fillcolor=red];
+  "茯苓" -> "黄芪";
+  "黄芪" [label="黄芪\n(HOT)\n访问:0", fillcolor=black];
+  "黄芪" -> "酢浆草";
+  "酢浆草" [label="酢浆草\n(COLD)\n访问:0", fillcolor=black];
+  "酢浆草" -> "金银花";
+  "金银花" [label="金银花\n(COLD)\n访问:0", fillcolor=red];
+  "黄芪" -> "黄花倒水莲";
+  "黄花倒水莲" [label="黄花倒水莲\n(COLD)\n访问:0", fillcolor=black];
+}
