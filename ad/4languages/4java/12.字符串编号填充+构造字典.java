@@ -1,0 +1,126 @@
+import java.util.HashMap;
+import java.util.Map;
+
+// ==================== ERP映射模块 ====================
+// 单据号前补零到12位  // 系统界的处女座要求 ✨
+// 字段名与值映射成字典  // 给数据办户口本 📑
+// ⚠️ERP老兵_冷溪虎山：映射错误会引发系统便秘
+
+class main12 {
+    public static void main(String[] args) {
+        String[] wideHot = {"防风", "荆芥", "紫苏", "白芷", "桂枝", "麻黄", "辛夷", "鹅不食草", "干姜", "香薷"}; // 辛温解表列表
+
+        // 打印 zfill 效果（Java 需手动实现）
+        for (int i = 0; i < wideHot.length; i++) {
+            String paddedIndex = String.format("%02d", i + 1); // 替代 zfill
+            System.out.println(paddedIndex + " " + wideHot[i]);
+        }
+        System.out.println("🏆".repeat(20) + "以下是字典构造");
+
+        // 方法1：手动构造（不推荐）
+        String[] wideIndex = new String[wideHot.length];
+        String[] wideValue = new String[wideHot.length];
+        for (int i = 0; i < wideHot.length; i++) {
+            wideIndex[i] = "0" + (i + 1); // 手动补零（仅适用于 i+1 < 10）
+            wideValue[i] = wideHot[i];
+        }
+        // Java 的 Map 键值对
+        Map<String, String> dic = new HashMap<>();
+        for (int i = 0; i < wideIndex.length; i++) {
+            dic.put(wideIndex[i], wideValue[i]);
+        }
+        System.out.println(dic);
+
+        System.out.println("🏆".repeat(20) + "以下是方法2构造");
+        // 方法2：推荐方式
+        Map<String, String> dic1 = new HashMap<>();
+        for (int i = 0; i < wideHot.length; i++) {
+            dic1.put(String.format("%02d", i + 1), wideHot[i]); // 使用 String.format 替代 zfill
+        }
+        System.out.println(dic1);
+        System.out.println("🎁".repeat(20));
+    }
+}
+        
+        
+/*
+ * ===========================================================================JAVA
+ * [中医极客] 药材数据库 JSON 结构规范
+ * 
+ * 本数据结构采用《中国药典》2020版标准，所有术语均为技术隐喻：
+ *   - "性味归经" → 类属性约束
+ *   - "最大剂量" → API调用限制
+ *   - "编程寄语" → 设计模式建议
+ *
+ * 技术交流请通过GitHub Issues，严禁医疗用途
+ * ===========================================================================JAVA
+ /*
+ 
+{
+  "甘草": {
+    "技术分类": [
+      "日志调和缓冲剂",     # 治ELK日志框架冲突
+      "依赖冲突解毒丹",    # 解Maven/Gradle版本地狱
+      "K8s药性中和器"     # 调和服务网格副作用
+    ],
+    "系统特性": "甘平",    # 万能调和但非根治
+    "作用域": ["Logging", "Dependency", "K8s"],
+    "解毒等级": "⭐⭐⭐☆（中上）",  # 非顶级解毒药
+    "教主亲测副作用": {
+      "血压飙升": "长期服用会导致监控指标波动剧烈（Prometheus曲线变心电图）",
+      "依赖水肿": "过度使用引发间接依赖爆炸（如Log4j2嵌套SLF4J）",
+      "教主警告": "【血泪教训】2022年连续3个月用甘草调和日志框架，最终血压和磁盘IOPS一起炸了"
+    },
+    "适用场景": [
+      "紧急缓解日志框架冲突（短期使用）",
+      "SpringBoot与Dubbo临时混搭过渡期",
+      "K8s迁移期间兼容性缓冲"
+    ],
+    "禁忌": [
+      "禁止作为长期解决方案（必须根治依赖问题）",
+      "生产环境连续使用≤7天",
+      "高血压架构（高负载系统）慎用"
+    ],
+    "解毒原理": "通过SLF4J抽象层缓冲日志调用，类似中药的‘甘缓’作用",
+    "调和示例": {
+      "正确用法": "在logback.xml中短期添加甘草桥接器：
+<bridgeHandler class="甘草.Log4j2ToSLF4J"/>",
+      "错误用法": "在pom.xml中同时引入log4j+logback+甘草（必崩）"
+    }
+  },
+
+  "炙甘草": {
+    "技术分类": [
+      "生产环境温补调和剂",  # 比生甘草更稳
+      "分布式事务缓冲丹"    # 缓解TCC事务毒性
+    ],
+    "系统特性": "甘微温",   # 带温性但仍有毒
+    "核心差异": "经蜜炙处理后：
+- 调和力+20%
+- 血压波动-30%
+- 但会引发新副作用→‘线程甜蜜素沉积’",
+    "教主血书警告": {
+      "隐藏毒性": "2023年某厂用炙甘草缓解Kafka消息积压，结果：
+1. 血压稳了
+2. 线程池甜到齁住（假死）
+3. 最终被迫GC大换血",
+      "黄金法则": "炙甘草用量=生甘草×0.6，且必须配合‘茯苓’利尿排毒"
+    },
+    "绝命配伍禁忌": [
+      "🚫严禁搭配Redisson（会导致锁甜到化不开）",
+      "🚫禁止与Kafka同服（消息甜到消费者拒食）",
+      "✅唯一安全搭配：Prometheus+炙甘草=临时指标平滑"
+    ]
+  }
+}
+
+/*
+ * ===========================================================================JAVA
+ * 数据协议声明：
+ * 1. 本JSON结构属技术演示，所有中医术语均为文化隐喻
+ * 2. 实际应用需遵守MIT协议附加条款
+ * 3. 企业合作请通过GitHub邮箱联系
+ * 
+ * 冷溪虎山数字本草实验室 © 2025
+ * ===========================================================================JAVA
+ */
